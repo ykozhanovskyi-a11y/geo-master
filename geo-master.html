@@ -1,19 +1,12 @@
 import os
 
-project_name = "geo-master"
-
-folders = [
-    project_name,
-    f"{project_name}/css",
-    f"{project_name}/js"
-]
-
-for folder in folders:
-    os.makedirs(folder, exist_ok=True)
+# створення папок
+os.makedirs("css", exist_ok=True)
+os.makedirs("js", exist_ok=True)
 
 files = {
 
-f"{project_name}/index.html": """<!DOCTYPE html>
+"index.html": """<!DOCTYPE html>
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
@@ -29,7 +22,7 @@ f"{project_name}/index.html": """<!DOCTYPE html>
 </html>
 """,
 
-f"{project_name}/game.html": """<!DOCTYPE html>
+"game.html": """<!DOCTYPE html>
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
@@ -50,7 +43,7 @@ f"{project_name}/game.html": """<!DOCTYPE html>
 </html>
 """,
 
-f"{project_name}/css/style.css": """body {
+"css/style.css": """body {
 font-family: Arial;
 background: #1e3c72;
 color: white;
@@ -64,7 +57,7 @@ cursor:pointer;
 }
 """,
 
-f"{project_name}/js/data.js": """const countries = [
+"js/data.js": """const countries = [
 { name: "Україна", capital: "Київ" },
 { name: "Франція", capital: "Париж" },
 { name: "Німеччина", capital: "Берлін" },
@@ -73,7 +66,7 @@ f"{project_name}/js/data.js": """const countries = [
 ];
 """,
 
-f"{project_name}/js/score.js": """let score = 0;
+"js/score.js": """let score = 0;
 
 function addPoint(){
 score++;
@@ -81,7 +74,7 @@ document.getElementById("score").textContent = score;
 }
 """,
 
-f"{project_name}/js/game.js": """let current = 0;
+"js/game.js": """let current = 0;
 let shuffled = countries.sort(() => 0.5 - Math.random());
 
 function loadQuestion(){
@@ -136,8 +129,9 @@ loadQuestion();
 """
 }
 
+# створення файлів
 for path, content in files.items():
     with open(path, "w", encoding="utf-8") as f:
         f.write(content)
 
-print("Проєкт GeoMaster створено!")
+print("✅ Гра створена правильно!")
